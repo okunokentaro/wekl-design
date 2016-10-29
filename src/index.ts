@@ -1,13 +1,4 @@
-class Second {
+import * as Decimal from 'decimal.js'
 
-  constructor(public v: number) {
-    //
-  }
-
-  toMin(): number {
-    return this.v / 60
-  }
-}
-
-const s = new Second(120)
-console.log(s.toMin())
+const d = new Decimal(1234.5678)
+console.log(d.toString())
