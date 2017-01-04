@@ -5,7 +5,7 @@ const checkArgDefaultMessage = `${errorPrefix}The argument is 0 or a positive nu
 const divErrorMessage        = `${errorPrefix}The argument is a positive number`
 const divisionByZeroMessage  = `${errorPrefix}Division by zero`
 
-const checkArg = (n: number | Decimal, message?: string = checkArgDefaultMessage) => {
+export const checkArg = (n: number | Decimal, message?: string = checkArgDefaultMessage) => {
   if (n instanceof Decimal) {
     return
   }
@@ -55,7 +55,7 @@ export class Decimal {
   }
 
   toNumber(): number {
-    return this.n
+    return unifyNumber(this.n)
   }
 
   plus(_v: number | Decimal): Decimal {
@@ -73,13 +73,13 @@ export class Decimal {
       : new Decimal(subtract(n, v))
   }
 
-  times(_v: number): Decimal {
+  times(_v: number | Decimal): Decimal {
     checkArg(_v)
     const [n, v] = [unifyNumber(this.n), unifyNumber(_v)]
     return new Decimal(multiply(n, v))
   }
 
-  div(_v: number): Decimal {
+  div(_v: number | Decimal): Decimal {
     checkArg(_v, divErrorMessage)
     const [n, v] = [unifyNumber(this.n), unifyNumber(_v)]
 
