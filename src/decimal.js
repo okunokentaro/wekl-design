@@ -27,7 +27,7 @@ const multiply = (x: number, y: number) => {
   const intX = parseInt(x.toString().replace('.', ''), 10)
   const intY = parseInt(y.toString().replace('.', ''), 10)
   const exponent = getExponent(x) + getExponent(y)
-  return (intX * intY) / Math.pow(10, exponent);
+  return (intX * intY) / Math.pow(10, exponent)
 }
 
 const subtract = (x: number, y: number) => {

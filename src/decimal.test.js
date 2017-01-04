@@ -16,12 +16,14 @@ const shouldThrowsTest = (cb) => {
   }
 
   [
+    /* eslint-disable no-multi-spaces */
     [-1,        'negative number'],
     [undefined, 'undefined'],
     [null,      'null'],
     [NaN,       'NaN'],
     [Infinity,  'Infinity'],
     [-Infinity, '-Infinity'],
+    /* eslint-enable no-multi-spaces */
   ].forEach((args) => pTest.apply(undefined, args))
 }
 
@@ -44,7 +46,7 @@ shouldThrowsTest((v) => new Decimal(v))
  */
 {
   const pTest = (a, b, expected) => {
-    test(`Should works #plus(), ${a} + ${b}`,(t) => {
+    test(`Should works #plus(), ${a} + ${b}`, (t) => {
       const ms = new Decimal(a)
       t.is(ms.plus(b).toNumber(), expected)
     })
@@ -73,7 +75,7 @@ shouldThrowsTest((v) => new Decimal(v))
  */
 {
   const pTest = (a, b, expected) => {
-    test(`Should works #minus(), ${a} - ${b}`,(t) => {
+    test(`Should works #minus(), ${a} - ${b}`, (t) => {
       const ms = new Decimal(a)
       t.is(ms.minus(b).toNumber(), expected)
     })
@@ -95,7 +97,7 @@ shouldThrowsTest((v) => new Decimal(v))
  */
 {
   const pTest = (a, b, expected) => {
-    test(`Should works #times(), ${a} * ${b}`,(t) => {
+    test(`Should works #times(), ${a} * ${b}`, (t) => {
       const ms = new Decimal(a)
       t.is(ms.times(b).toNumber(), expected)
     })
@@ -119,7 +121,7 @@ shouldThrowsTest((v) => new Decimal(v))
  */
 {
   const pTest = (a, b, expected) => {
-    test(`Should works #div(), ${a} / ${b}`,(t) => {
+    test(`Should works #div(), ${a} / ${b}`, (t) => {
       const ms = new Decimal(a)
       t.is(ms.div(b).toNumber(), expected)
     })

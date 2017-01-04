@@ -13,7 +13,14 @@
     "quotes": [2, "single"],
     "no-dupe-args": 2,
     "no-dupe-keys": 2,
-    "no-multi-spaces": 2,
+    "no-multi-spaces": [
+      2,
+      {
+        "exceptions": {
+          "VariableDeclarator": true
+        }
+      }
+    ],
     "array-bracket-spacing": 2,
     "block-spacing": 2,
     "comma-spacing": 2,
