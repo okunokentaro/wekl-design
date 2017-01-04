@@ -72,6 +72,8 @@ shouldThrowsTest((v) => new Decimal(v))
   parameters.forEach((p) => {
     pTest(...p)
     pTest(...[p[0], new Decimal(p[1]), p[2]])
+    pTest(...[new Decimal(p[0]), p[1], p[2]])
+    pTest(...[new Decimal(p[0]), new Decimal(p[1]), p[2]])
   })
 
   shouldThrowsTest((v) => new Decimal(1).plus(v))
@@ -101,6 +103,8 @@ shouldThrowsTest((v) => new Decimal(v))
   parameters.forEach((p) => {
     pTest(...p)
     pTest(...[p[0], new Decimal(p[1]), p[2]])
+    pTest(...[new Decimal(p[0]), p[1], p[2]])
+    pTest(...[new Decimal(p[0]), new Decimal(p[1]), p[2]])
   })
 
   shouldThrowsTest((v) => new Decimal(1).minus(v))
@@ -132,6 +136,8 @@ shouldThrowsTest((v) => new Decimal(v))
   parameters.forEach((p) => {
     pTest(...p)
     pTest(...[p[0], new Decimal(p[1]), p[2]])
+    pTest(...[new Decimal(p[0]), p[1], p[2]])
+    pTest(...[new Decimal(p[0]), new Decimal(p[1]), p[2]])
   })
 
   shouldThrowsTest((v) => new Decimal(1).times(v))
@@ -161,6 +167,8 @@ shouldThrowsTest((v) => new Decimal(v))
   parameters.forEach((p) => {
     pTest(...p)
     pTest(...[p[0], new Decimal(p[1]), p[2]])
+    pTest(...[new Decimal(p[0]), p[1], p[2]])
+    pTest(...[new Decimal(p[0]), new Decimal(p[1]), p[2]])
   })
 
   shouldThrowsTest((v) => new Decimal(1).div(v))
