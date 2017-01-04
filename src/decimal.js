@@ -5,7 +5,11 @@ const checkArgDefaultMessage = `${errorPrefix}The argument is 0 or a positive nu
 const divErrorMessage        = `${errorPrefix}The argument is a positive number`
 const divisionByZeroMessage  = `${errorPrefix}Division by zero`
 
-const checkArg = (n: number, message?: string = checkArgDefaultMessage) => {
+const checkArg = (n: number | Decimal, message?: string = checkArgDefaultMessage) => {
+  if (n instanceof Decimal) {
+    return
+  }
+
   const expected = 0 <= n
     && !isNaN(n)
     && n !== undefined
@@ -14,6 +18,12 @@ const checkArg = (n: number, message?: string = checkArgDefaultMessage) => {
   if (!expected) {
     throw new Error(`${message}`)
   }
+}
+
+const unifyNumber = (n: number | Decimal): number => {
+  return n instanceof Decimal
+    ? n.toNumber()
+    : n
 }
 
 const getExponent = (v: number) => {
@@ -48,28 +58,35 @@ export class Decimal {
     return this.n
   }
 
-  plus(v: number): Decimal {
+  plus(v: number | Decimal): Decimal {
     checkArg(v)
-    return new Decimal(this.n + v)
+    const numV = unifyNumber(v)
+    return new Decimal(this.n + numV)
   }
 
-  minus(v: number): Decimal {
+  minus(v: number | Decimal): Decimal {
     checkArg(v)
-    return this.n < v
+    const numV = unifyNumber(v)
+
+    return this.n < numV
       ? new Decimal(0)
-      : new Decimal(subtract(this.n, v))
+      : new Decimal(subtract(this.n, numV))
   }
 
   times(v: number): Decimal {
     checkArg(v)
-    return new Decimal(multiply(this.n, v))
+    const numV = unifyNumber(v)
+
+    return new Decimal(multiply(this.n, numV))
   }
 
   div(v: number): Decimal {
     checkArg(v, divErrorMessage)
-    if (v === 0) {
+    const numV = unifyNumber(v)
+
+    if (numV === 0) {
       throw new Error(divisionByZeroMessage)
     }
-    return new Decimal(this.n / v)
+    return new Decimal(this.n / numV)
   }
 }
