@@ -71,8 +71,6 @@ shouldThrowsTest((v) => new Decimal(v))
 
   parameters.forEach((p) => {
     pTest(...p)
-  })
-  parameters.forEach((p) => {
     pTest(...[p[0], new Decimal(p[1]), p[2]])
   })
 
@@ -102,8 +100,6 @@ shouldThrowsTest((v) => new Decimal(v))
 
   parameters.forEach((p) => {
     pTest(...p)
-  })
-  parameters.forEach((p) => {
     pTest(...[p[0], new Decimal(p[1]), p[2]])
   })
 
@@ -135,8 +131,6 @@ shouldThrowsTest((v) => new Decimal(v))
 
   parameters.forEach((p) => {
     pTest(...p)
-  })
-  parameters.forEach((p) => {
     pTest(...[p[0], new Decimal(p[1]), p[2]])
   })
 
@@ -166,8 +160,6 @@ shouldThrowsTest((v) => new Decimal(v))
 
   parameters.forEach((p) => {
     pTest(...p)
-  })
-  parameters.forEach((p) => {
     pTest(...[p[0], new Decimal(p[1]), p[2]])
   })
 
