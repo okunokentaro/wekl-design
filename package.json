@@ -8,7 +8,8 @@
     ]
   },
   "dependencies": {
-    "babel-polyfill": "^6.20.0"
+    "babel-polyfill": "^6.20.0",
+    "decimal.js": "^7.1.0"
   },
   "devDependencies": {
     "ava": "^0.17.0",
@@ -31,6 +32,7 @@
     "lint:fix": "eslint src test --fix",
     "start": "webpack-dev-server",
     "test": "ava",
+    "test:watch": "ava --watch",
     "typecheck": "flow"
   }
 }
