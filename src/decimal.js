@@ -47,9 +47,9 @@ const subtract = (x: number, y: number) => {
 }
 
 export class Decimal {
-  n: number
+  n: number | Decimal
 
-  constructor(n: number) {
+  constructor(n: number | Decimal) {
     checkArg(n)
     this.n = n
   }
@@ -58,35 +58,35 @@ export class Decimal {
     return this.n
   }
 
-  plus(v: number | Decimal): Decimal {
-    checkArg(v)
-    const numV = unifyNumber(v)
-    return new Decimal(this.n + numV)
+  plus(_v: number | Decimal): Decimal {
+    checkArg(_v)
+    const [n, v] = [unifyNumber(this.n), unifyNumber(_v)]
+    return new Decimal(n + v)
   }
 
-  minus(v: number | Decimal): Decimal {
-    checkArg(v)
-    const numV = unifyNumber(v)
+  minus(_v: number | Decimal): Decimal {
+    checkArg(_v)
+    const [n, v] = [unifyNumber(this.n), unifyNumber(_v)]
 
-    return this.n < numV
+    return n < v
       ? new Decimal(0)
-      : new Decimal(subtract(this.n, numV))
+      : new Decimal(subtract(n, v))
   }
 
-  times(v: number): Decimal {
-    checkArg(v)
-    const numV = unifyNumber(v)
-
-    return new Decimal(multiply(this.n, numV))
+  times(_v: number): Decimal {
+    checkArg(_v)
+    const [n, v] = [unifyNumber(this.n), unifyNumber(_v)]
+    return new Decimal(multiply(n, v))
   }
 
-  div(v: number): Decimal {
-    checkArg(v, divErrorMessage)
-    const numV = unifyNumber(v)
+  div(_v: number): Decimal {
+    checkArg(_v, divErrorMessage)
+    const [n, v] = [unifyNumber(this.n), unifyNumber(_v)]
 
-    if (numV === 0) {
+    if (v === 0) {
       throw new Error(divisionByZeroMessage)
     }
-    return new Decimal(this.n / numV)
+
+    return new Decimal(n / v)
   }
 }

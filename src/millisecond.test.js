@@ -12,8 +12,14 @@ import {Millisecond} from './millisecond'
     })
   }
 
-  pTest(1000, 1)
-  pTest(1001, 1.001)
-  pTest(1, 0.001)
-  pTest(0.1, 0.0001)
+  const parameters = [
+    [1000, 1],
+    [1001, 1.001],
+    [1, 0.001],
+    [0.1, 0.0001],
+  ]
+
+  parameters.forEach((p) => {
+    pTest(...p)
+  })
 }
